@@ -138,6 +138,34 @@ router.post('/del/:id', function (req, res) {
   }
 });
 
+router.post('/edit/:id', function (req, res) {
+  if (!!req.params.id) {
+    Todo.update({ _id: req.params.id }, {
+      content: req.body.content,
+    }, function (err) {
+      if (err) {
+        return res.json({
+          status: 'fail',
+          data: {},
+          message: '数据库错误',
+          stack: err.stack,
+        })
+      }
+      return res.json({
+        status: 'success',
+        data: {},
+        message: '编辑成功',
+      })
+    })
+  } else {
+    return res.json({
+      status: 'fail',
+      data: {},
+      message: 'id不能为空!'
+    })
+  }
+});
+
 router.get('/all', function (req, res) {
   Todo.find({},function (err, todos) {
     if (err) {

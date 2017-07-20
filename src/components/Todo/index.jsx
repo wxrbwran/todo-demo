@@ -57,6 +57,10 @@ class Todo extends Component {
         })
         .catch(err => {
           console.log(err);
+          this.setState({
+            content: '',
+            loading: false,
+          });
         })
     } else {
       alert('您保存的太快了!');
@@ -73,7 +77,7 @@ class Todo extends Component {
       console.log(err);
     })
   }
-	
+
   render() {
     const { todoList, content } = this.state;
     return (
@@ -96,6 +100,7 @@ class Todo extends Component {
       <List
         todoList={todoList}
         removeTodoItem={this.removeTodoItem}
+        fetchAllTodos={this.fetchAllTodos}
       />
       </div>
     )

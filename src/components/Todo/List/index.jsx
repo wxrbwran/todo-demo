@@ -14,6 +14,7 @@ class TodoList extends React.Component {
           date={item.date}
           id={item.id}
           removeTodoItem={this.props.removeTodoItem}
+          fetchAllTodos={this.props.fetchAllTodos}
         />
       );
     });
