@@ -1,0 +1,25 @@
+extends layout
+block content
+    h2 Sign up for our newsletter to receive news and specials!
+    .formContainer
+        form.form-horizontal(role="form"
+            enctype="multipart/form-data" action="/process" method="POST")
+            input#_csrf(name='_csrf', value={_csrfToken}, type='hidden')
+            .form-group
+                label.col-sm-2.control-label(for="name") Name
+                .col-sm-4
+                    input#name.form-control(type="text", name="name")
+            .form-group
+                label.col-sm-2.control-label(for='email') Email
+                .col-sm-4
+                    input#email.form-control(type="email", required, name="email")
+            .form-group
+                label.col-sm-2.control-label(for='photo') File
+                .col-sm-4
+                    input#photo.form-control(type="file", accept="image/jpg,image/png", name="photo")
+            .form-group
+                .col-sm-offset-2.col-sm-4
+                    button.btn.btn-default#submi(type="submit") Register
+    p.msg
+block scripts
+    script(src='js/newsletter.js')

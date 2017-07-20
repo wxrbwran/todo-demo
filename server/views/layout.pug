@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel="stylesheet", href='//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block style
+  body
+    if flash
+      div.alert.alert-dismissible
+        button.close(data-dismiss="alert") &times
+        strong= flash.intro
+        .
+          #{flash.message}
+    block content
+    script(src='//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js')
+    script(src='//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    block scripts
