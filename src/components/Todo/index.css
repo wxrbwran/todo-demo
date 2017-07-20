@@ -1,0 +1,75 @@
+.container {
+  margin: 10px auto;
+  width: 400px;
+  height: 475px;
+  padding: 20px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px #000;
+  background: rgba(255,255,255,0.3);
+  overflow: hidden;
+}
+
+.header h2 {
+  padding: 0;
+  margin: 0;
+  font-size: 25px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.todo-form {
+  margin: 20px 0 30px 0;
+}
+
+.todo-content {
+  display: block;
+  width: 380px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: rgba(0,0,0, .3) 1px solid;
+  border-radius: 3px;
+}
+
+.tooltip {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #FF4A60;
+}
+.todo-lists{
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 350px;
+}
+.todo-item {
+  padding: 5px 0;
+  margin-bottom: 10px;
+  color: #333;
+  background: #fff;
+  border-radius: 3px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px dashed #666;
+}
+.item-cont{
+  flex: 0 0 260px;
+  max-width: 260px;
+  text-align: left;
+  word-break: break-all;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+.item-time{
+  flex: 0 0 100px;
+}
+.del-btn {
+  flex: 0 0 40px;
+  color: #666;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+}
+

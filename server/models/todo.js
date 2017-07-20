@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const todoSchema = mongoose.Schema({
   date: {
-    type: Date,
+    type: Number,
     default: Date.now(),
   },
   content: {

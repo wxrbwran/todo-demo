@@ -1,7 +1,6 @@
 const express = require('express');
 const Attraction = require('../models/attraction');
 const Todo = require('../models/Todo');
-
 const router = express.Router();
 
 /* GET users listing. */
@@ -81,7 +80,6 @@ router.get('/attraction/:id', function(req, res, next) {
 });
 
 router.post('/add', function (req, res) {
-  console.log(req.body);
   if (!!req.body.content) {
     const todo = new Todo({
       content: req.body.content,
@@ -111,6 +109,57 @@ router.post('/add', function (req, res) {
       message: '内容不能为空!'
     })
   }
+});
+
+router.post('/del/:id', function (req, res) {
+  if (!!req.params.id) {
+    console.log(req.params.id);
+    Todo.remove({ _id: req.params.id }, function (err) {
+      if (err) {
+        return res.json({
+          status: 'fail',
+          data: {},
+          message: '数据库错误',
+          stack: err.stack,
+        })
+      }
+      return res.json({
+        status: 'success',
+        data: {},
+        message: '删除成功',
+      })
+    })
+  } else {
+    return res.json({
+      status: 'fail',
+      data: {},
+      message: 'id不能为空!'
+    })
+  }
+});
+
+router.get('/all', function (req, res) {
+  Todo.find({},function (err, todos) {
+    if (err) {
+      return res.json({
+        status: 'fail',
+        data: {},
+        message: '数据库错误',
+        stack: err.stack,
+      })
+    }
+    return res.json({
+      status: 'success',
+      data: todos.map(todo => {
+        return {
+          id: todo._id,
+          content: todo.content,
+          date: +todo.date,
+        }
+      }),
+      count: todos.length,
+    })
+  })
 });
 
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 class TodoItem extends React.Component {
 
@@ -11,18 +12,17 @@ class TodoItem extends React.Component {
 	
 	render() {
 		return (
-			<div className="todoItem">
-				<p>
-					<span className="itemCont">{ this.props.content }</span>
-					<span className="itemTime">{ this.props.date }</span>
-					<button className="delBtn">
-						<img
-							className="delIcon"
-							src="/images/delete.png"
-							alt="img"
-						/>
-					</button>
-				</p>					
+			<div className="todo-item">
+				<span className="item-cont">{ this.props.content }</span>
+				<span className="item-time">
+					{ moment(this.props.date).format('YYYY/MM/DD') }
+				</span>
+				<button
+					onClick={() => this.props.removeTodoItem(this.props.id)}
+					className="del-btn"
+				>
+					删除
+				</button>
 			</div>
 		)
 	}
